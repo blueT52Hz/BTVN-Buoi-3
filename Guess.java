@@ -1,24 +1,24 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class Khach {
-    public static Scanner sc = new Scanner(System.in);
-    public static List<Book> books = QuanLySach.getListBook();
-    public static void menuKhach() {
+public class Guess {
+    public static List<Book> books = BookManagement.getListBook();
+    public static void menuGuess() {
         System.out.println("0. Thoát");
         System.out.println("1. Tìm kiếm sách.");
         System.out.println("2. Xem danh sách sách");
         System.out.print("Chọn chức năng của khách: ");
     }
-    public static void chonChucNang() {
+    public static void chooseModeGuess() {
+        Scanner sc = new Scanner(System.in);
         while(true) {
             try {
-                menuKhach();
-                int cn = Integer.valueOf(sc.nextLine());
+                menuGuess();
+                int chooseMode = Integer.valueOf(sc.nextLine());
                 System.out.println("=============================");
-                if(cn==0) break;
-                else if(cn==1) timSach();
-                else if(cn==2) inDsachSach();
+                if(chooseMode==0) break;
+                else if(chooseMode==1) modeFindBook();
+                else if(chooseMode==2) modeShowListBook();
                 else System.out.println("Chức năng của Khách không hợp lệ.");
                 System.out.println("=============================");
             } catch (Exception e) {
@@ -27,23 +27,21 @@ public class Khach {
             }
         }
     }
-    public static void timSach() {
+    public static void modeFindBook() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Nhập thông tin sách: ");
-        String s = sc.nextLine();
+        String info = sc.nextLine();
         System.out.println("=============================");
-        Book res = QuanLySach.timSach(s, books);
+        Book res = BookManagement.findBook(info, books);
         if(res != null) {
             System.out.println("Sách bạn cần tìm là: ");
-            res.display();
+            res.showInformation();
         } else {
             System.out.println("Thông tin sách không hợp lệ.");
         }
     }
-    public static void inDsachSach() {
-        for (int i=0;i< books.size();++i) {
-            books.get(i).display();
-            System.out.println("-------------------------------------------------");
-        }
+    public static void modeShowListBook() {
+        BookManagement.showListBook(books);
     }
 
 }
