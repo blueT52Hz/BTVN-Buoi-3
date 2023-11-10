@@ -21,7 +21,7 @@ public class Admin {
         return passWord;
     }
     public static List<Admin> getListAdmin() {
-        List<String> lines = ReadFile.stringsFromPathOfFile("listAdmin.txt");
+        List<String> lines = ReadFile.stringsFromPathOfFile("E:\\0000.CODE\\10. Java\\000. PROPTIT\\3.Buoi3\\Buoi_3 Tren lop\\Buoi_3\\src\\listAdmin.txt");
         List<Admin> admins = new ArrayList<Admin>();
         for(String line : lines) {
             admins.add(Admin.adminFromString(line));

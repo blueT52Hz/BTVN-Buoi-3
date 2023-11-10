@@ -1,6 +1,9 @@
 import java.io.File;
 import java.nio.file.Files;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadFile {
@@ -16,7 +19,4 @@ public class ReadFile {
         return List.of(new String[0]);
     }
 
-    public static void main(String[] args) {
-
-    }
 }

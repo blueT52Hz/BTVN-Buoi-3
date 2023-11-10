@@ -22,7 +22,7 @@ public class WriteFile {
     public static void writeContinueListBook(Book book, String pathOfFile) {
         try {
             PrintWriter pw = null;
-            pw = new PrintWriter(new FileWriter("listBook.txt", true)); // chọn file có địa chỉ như đường dẫn
+            pw = new PrintWriter(new FileWriter(pathOfFile, true)); // chọn file có địa chỉ như đường dẫn
             pw.printf("%s|%s|%s|%s|%s\n", book.getId(), book.getTitle(), book.getNameAuthor(), book.getType(), book.getStringReleaseDate());
             pw.flush();
             pw.close();

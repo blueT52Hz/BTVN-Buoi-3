@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BookManagement {
     public static List<Book> getListBook() {
         try {
-            List<String> listBook = ReadFile.stringsFromPathOfFile("listBook.txt");
+            List<String> listBook = ReadFile.stringsFromPathOfFile("E:\\0000.CODE\\10. Java\\000. PROPTIT\\3.Buoi3\\Buoi_3 Tren lop\\Buoi_3\\src\\listBook.txt");
             List<Book> books = new ArrayList<Book>();
             for(String line : listBook) {
                 books.add(Book.bookFromString(line));
@@ -51,7 +51,7 @@ public class BookManagement {
             System.out.println("Không tìm thấy sách cần xóa qua thông tin trên");
             return;
         } else {
-            WriteFile.writeNewListBook(books, "listBook.txt");
+            WriteFile.writeNewListBook(books, "E:\\0000.CODE\\10. Java\\000. PROPTIT\\3.Buoi3\\Buoi_3 Tren lop\\Buoi_3\\src\\listBook.txt");
             System.out.println("Xóa sách thành công.");
         }
     }
@@ -72,7 +72,7 @@ public class BookManagement {
             String nxb = sc.nextLine();
             Book newBook = new Book(id, tieuDe, new Author(tacGia), theLoai, new Day(nxb));
             books.add(newBook);
-            WriteFile.writeContinueListBook(newBook, "listBook.txt");
+            WriteFile.writeContinueListBook(newBook, "E:\\0000.CODE\\10. Java\\000. PROPTIT\\3.Buoi3\\Buoi_3 Tren lop\\Buoi_3\\src\\listBook.txt");
         } catch (Exception e) {
             System.out.println("Thông tin thêm sách không hợp lệ.");
             return;
@@ -115,7 +115,7 @@ public class BookManagement {
                 else System.out.println("Chức năng sửa không hợp lệ.");
 
             }
-            WriteFile.writeNewListBook(books, "listBook.txt");
+            WriteFile.writeNewListBook(books, "E:\\0000.CODE\\10. Java\\000. PROPTIT\\3.Buoi3\\Buoi_3 Tren lop\\Buoi_3\\src\\listBook.txt");
             System.out.println("Sửa thông tin sách thành công");
         }
     }
