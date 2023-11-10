@@ -1,91 +1,78 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.io.IOException;
 
 public class Book {
-    private String tieuDe, theLoai, id;
-    private Author tacGia;
-    private Day nxb;
-    public static Scanner sc = new Scanner(System.in);
+    private String title, type, id;
+    private Author author;
+    private Day releaseDate;
 
-    public Book(String id, String tieuDe, Author tacGia,String theLoai, Day nxb) {
+    public Book(String id, String title, Author author, String type, Day releaseDate) {
         this.id = id;
-        this.tieuDe = tieuDe;
-        this.theLoai = theLoai;
-        this.tacGia = tacGia;
-        this.nxb = nxb;
+        this.title = title;
+        this.type = type;
+        this.author = author;
+        this.releaseDate = releaseDate;
     }
 
-    public Book(String s) {
+    public static Book bookFromString(String s) {
         String[] strings = s.split("\\|");
-        id = strings[0];
-        tieuDe = strings[1];
-        tacGia = new Author(strings[2]);
-        theLoai = strings[3];
-        nxb = new Day(strings[4]);
+        return new Book(strings[0], strings[1], new Author(strings[2]), strings[3], new Day(strings[4]));
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getTieuDe() {
-        return tieuDe;
-    }
-
-    public String getTacGia() {
-        return tacGia.getName();
-    }
-
-    public String getTheLoai() {
-        return theLoai;
-    }
-
-    public String getNxb() {
-        return nxb.toString();
-    }
-
-    public void setTieuDe(String tieuDe) {
-        this.tieuDe = tieuDe;
-    }
-
-    public void setTheLoai(String theLoai) {
-        this.theLoai = theLoai;
-    }
-
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setTacGia(Author tacGia) {
-        this.tacGia = tacGia;
+    public Author getAuthor() {
+        return author;
+    }
+    public String getNameAuthor() {
+        return author.getName();
     }
 
-    public void setNxb(Day nxb) {
-        this.nxb = nxb;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
-    public boolean soSanh(String s) {
-        if(s.equals(id) || s.equals(theLoai) || s.equals(tieuDe) || s.equals(getTacGia()) || s.equals(getNxb())) return true;
+    public Day getReleaseDate() {
+        return releaseDate;
+    }
+    public String getStringReleaseDate() {
+        return releaseDate.toString();
+    }
+
+    public void setReleaseDate(Day releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public boolean compare(String s) {
+        if(s.equals(id) || s.equals(title) || s.equals(type) || s.equals(getNameAuthor()) || s.equals(getStringReleaseDate())) return true;
         return false;
     }
 
-    @Override
-    public String toString() {
-        return id+"|"+tieuDe+"|"+getTacGia()+"|"+theLoai+"|"+getNxb();
-    }
-
-    public void display() {
+    public void showInformation() {
         System.out.println("Id: " + id);
-        System.out.println("Tiêu đề: " + getTieuDe());
-        System.out.println("Tác giả: " + getTacGia());
-        System.out.println("Thể loại: " + getTheLoai());
-        System.out.println("Năm xuất bản: " + getNxb());
+        System.out.println("Tiêu đề: " + getTitle());
+        System.out.println("Tác giả: " + getNameAuthor());
+        System.out.println("Thể loại: " + getTitle());
+        System.out.println("Ngày xuất bản: " + getStringReleaseDate());
     }
 }
